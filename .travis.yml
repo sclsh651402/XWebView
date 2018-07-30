@@ -1,0 +1,11 @@
+language: objective-c
+osx_image: xcode9
+#xcode_sdk: iphonesimulator9.0
+#xcode_project: XWebView.iOS.xcodeproj
+#xcode_scheme: XWebView
+#xctool_args: "-destination 'platform=iOS Simulator,OS=9.0,name=iPhone 5s'"
+env:
+  matrix:
+    - PROJECT=XWebView.iOS.xcodeproj DESTINATION="platform=iOS Simulator,OS=9.0,name=iPhone 5s"
+    - PROJECT=XWebView.macOS.xcodeproj DESTINATION="platform=macOS,arch=x86_64"
+script: xcodebuild -project "$PROJECT" -scheme XWebView -configuration Debug -destination "$DESTINATION" test
